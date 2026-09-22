@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 🎨 المتغيرات العامة وتحسينات الواجهة */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+html {
+  color-scheme: light;
+  scroll-behavior: smooth;
+}
+
+body {
+  direction: rtl;
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+/* 🎯 العناصر البصرية (UI Elements) */
+
+/* الختم الرسمي الدائري في قسم الـ Hero */
+.seal-ring {
+  border-radius: 9999px;
+  border: 1.5px dashed currentColor;
+}
+
+/* ⌨️ مؤشر التركيز الموحد للموقع (Accessibility Focus) */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid #0e6b5c;
+  outline-offset: 2px;
+}
+
+/* 🎬 الحركات والأنيميشن (Animations) */
+
+/* أولاً: حركة دخول الختم عند تحميل الصفحة */
+@keyframes stampIn {
+  0% {
+    opacity: 0;
+    transform: scale(1.35) rotate(-10deg);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(0.96) rotate(2deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(-4deg);
+  }
+}
+
+.stamp-in {
+  animation: stampIn 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ثانياً: حركة كرت التحقق للشركات (Terminal Card Reveal) */
+@keyframes riseIn {
+  0% {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.rise-in {
+  animation: riseIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* 🛑 إيقاف الحركات للمستخدمين الذين يفضلون حركة مخففة */
+@media (prefers-reduced-motion: reduce) {
+  .stamp-in,
+  .rise-in {
+    animation: none !important;
+    transition: none !important;
+  }
+}
