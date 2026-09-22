@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-// @ts-expect-error Next.js processes this global stylesheet import at build time.
 import "./globals.css";
 
 // الخط الأساسي للموقع
